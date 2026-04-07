@@ -1,3 +1,0 @@
-INDEX VERSION 1.134
-D:\DemoProjects\SB_basics\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2682570916.index
-\TaskManageMent\src\main\java
