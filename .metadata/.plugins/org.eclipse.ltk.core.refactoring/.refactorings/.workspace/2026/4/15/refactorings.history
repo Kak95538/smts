@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SmartTaskManageMent&apos; to &apos;task-service&apos;" description="Rename resource &apos;SmartTaskManageMent&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/SmartTaskManageMent" name="task-service" stamp="1775539491871" updateReferences="true"/>
+</session>

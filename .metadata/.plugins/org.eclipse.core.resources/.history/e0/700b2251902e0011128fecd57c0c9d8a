@@ -1,0 +1,5 @@
+package com.example.stms;
+
+public interface A {
+
+}

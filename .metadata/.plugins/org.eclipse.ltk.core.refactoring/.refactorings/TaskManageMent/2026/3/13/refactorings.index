@@ -1,0 +1,11 @@
+1774432222556	Delete element
+1774504305511	Move 'scripts' to 'WEB-INF'
+1774504312424	Move 'scripts' to 'main'
+1774504374531	Rename resource 'webapp'
+1774504388257	Rename resource 'WEB-INF'
+1774504396038	Rename resource 'webapp1'
+1774504410763	Move 'scripts' to 'webapp'
+1774504465451	Move 'style.css' to 'css'
+1774504824574	Rename resource 'login.html'
+1774512675045	Rename resource 'dashboard.html'
+1774529444086	Rename package 'com.example.demo.controller.exceptionhandling'

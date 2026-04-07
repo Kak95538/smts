@@ -1,0 +1,48 @@
+package com.example.auth.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.example.auth.entity.User;
+import com.example.auth.repository.UserRepository;
+
+@Service
+public class AuthService {
+
+    @Autowired
+    private UserRepository repo;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    
+
+    public User register(User user) {
+        user.setRole("ROLE_USER");
+     // while registering
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return repo.save(user);
+    }
+
+    public User login(String username, String password) {
+
+        User user = repo.findByUsername(username);
+
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException("Invalid credentials");
+        }
+
+        System.out.println("Login success ✅");
+
+        return user;
+    }
+    
+    public User getUserByUsername(String username) {
+        return repo.findByUsername(username);
+    }
+}

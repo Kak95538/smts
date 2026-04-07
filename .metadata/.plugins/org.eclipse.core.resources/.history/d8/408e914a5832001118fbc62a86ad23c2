@@ -1,0 +1,61 @@
+package com.example.auth.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.auth.entity.User;
+import com.example.auth.jwt.JwtUtil;
+import com.example.auth.service.AuthService;
+
+@RestController
+@RequestMapping("/auth")
+@CrossOrigin("*")
+public class AuthController {
+
+    @Autowired
+    private AuthService service;
+    
+    @Autowired
+    private JwtUtil jwtUtil;
+    
+    @Autowired
+    private AuthenticationManager authManager;
+
+    
+    @GetMapping("/test")
+    public String test() {
+        return "JWT is working 🔥";
+    }
+    
+ // ADMIN API
+    @GetMapping("/admin/data")
+    public String admin() {
+        return "Admin Access ✅";
+    }
+
+    // USER API
+    @GetMapping("/user/data")
+    public String user() {
+        return "User Access ✅";
+    }
+
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return service.register(user);
+    }
+
+  
+    @PostMapping("/login")
+    public String login(@RequestParam String username,
+                        @RequestParam String password) {
+
+        authManager.authenticate(
+            new UsernamePasswordAuthenticationToken(username, password)
+        );
+
+        User user = service.getUserByUsername(username);
+
+        return jwtUtil.generateToken(user.getUsername(), user.getRole());
+    }
+}
